@@ -1,0 +1,6 @@
+transpose/transpose
+pointer_chase/chase
+warp_shuffle/shuffle
+softmax/softmax
+*.ncu-rep
+*.nsys-rep

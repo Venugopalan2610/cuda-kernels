@@ -7,7 +7,7 @@ Small CUDA exercises, each measured against the limit of the hardware it runs on
 | [transpose](transpose/) | Transpose a 16,384 × 16,384 float matrix (1 GiB) | 12.313 ms naive → 5.911 ms tiled; a plain copy takes 5.630 ms, cuBLAS 5.535 ms |
 | [softmax](softmax/) | Row softmax over 16,384 rows of 4,096 floats | 1.416 ms, 97% of a plain copy of the same bytes |
 | [pointer_chase](pointer_chase/) | One thread follows a chain of dependent loads through arrays from 16 KB to 512 MB | the latency of each level of the memory hierarchy, in clock ticks |
-| [warp_shuffle](warp_shuffle/) | One warp reduces its 32 values with shuffles | every lane ends with the result |
+| [warp_shuffle](warp_shuffle/) | One warp finds the max of its 32 values with shuffles | every lane ends with the result |
 
 ## Who wrote what
 

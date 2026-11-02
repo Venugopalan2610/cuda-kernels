@@ -1,4 +1,4 @@
-// Harness: launches your warp_sum with one warp, then checks out[0..31] against the CPU max.
+// Harness: launches your warp_max with one warp, then checks out[0..31] against the CPU max.
 // Every lane must write its x to out[lane]. A lane that does not write keeps -1.
 // Usage: ./shuffle
 #include <cstdio>
@@ -16,7 +16,7 @@ int main()
     CHECK(cudaMalloc(&d_out, lanes * sizeof(int)));
     CHECK(cudaMemset(d_out, 0xff, lanes * sizeof(int)));   // -1, so a missing write is visible
 
-    warp_sum<<<1, lanes>>>(d_out);
+    warp_max<<<1, lanes>>>(d_out);
     CHECK(cudaGetLastError());
     CHECK(cudaDeviceSynchronize());
 

@@ -1,10 +1,10 @@
-// Your kernel: one warp sums its 32 values with shuffles.
-// Launched with 1 block of 32 threads. Lane 0 writes the sum to out[0].
+// Your kernel: one warp finds the max of its 32 values with shuffles.
+// Launched with 1 block of 32 threads. Every lane writes the max to out[lane].
 
-// The input of each lane. The harness uses the same function for the CPU sum.
+// The input of each lane. The harness uses the same function for the CPU max.
 __host__ __device__ int input(int lane) { return (lane * 7) % 32; }
 
-__global__ void warp_sum(int* out)
+__global__ void warp_max(int* out)
 {
     int lane = threadIdx.x % 32;
     int x = input(lane);

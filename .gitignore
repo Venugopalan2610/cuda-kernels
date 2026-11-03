@@ -4,3 +4,5 @@ warp_shuffle/shuffle
 softmax/softmax
 *.ncu-rep
 *.nsys-rep
+bcjr_alpha/alpha.so
+__pycache__/

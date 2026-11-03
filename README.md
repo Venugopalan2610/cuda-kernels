@@ -8,10 +8,11 @@ Small CUDA exercises, each measured against the limit of the hardware it runs on
 | [softmax](softmax/) | Row softmax over 16,384 rows of 4,096 floats | 1.416 ms, 97% of a plain copy of the same bytes |
 | [pointer_chase](pointer_chase/) | One thread follows a chain of dependent loads through arrays from 16 KB to 512 MB | the latency of each level of the memory hierarchy, in clock ticks |
 | [warp_shuffle](warp_shuffle/) | One warp finds the max of its 32 values with shuffles | every lane ends with the result |
+| [bcjr_alpha](bcjr_alpha/) | One BCJR alpha step from my BCJR-QAT paper, 16 × 65,536 trellis states | 82.88 µs for my paper's Triton kernel → 32.51 µs in CUDA |
 
 ## Who wrote what
 
-I wrote the kernels: the `.cu` file named after each exercise (`transpose.cu`, `softmax.cu`, `chase.cu`, `warp_shuffle.cu`). An AI tutor wrote the harnesses (`harness.cu`) and the `run.sh` scripts, which set up the data, check every output against the CPU, and time the runs. The comments at the top of each kernel file are the exercise as it was set; the code under them is mine, as I wrote it.
+I wrote the kernels: the `.cu` file named after each exercise (`transpose.cu`, `softmax.cu`, `chase.cu`, `warp_shuffle.cu`, `alpha.cu`). An AI tutor wrote the harnesses (`harness.cu`, and `test_alpha.py` and `profile_alpha.py` for bcjr_alpha) and the `run.sh` scripts, which set up the data, check every output against the CPU (for bcjr_alpha, against the Triton kernel), and time the runs. The comments at the top of each kernel file are the exercise as it was set; the code under them is mine, as I wrote it.
 
 ## Running them
 

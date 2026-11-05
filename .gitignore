@@ -6,3 +6,4 @@ softmax/softmax
 *.nsys-rep
 bcjr_alpha/alpha.so
 __pycache__/
+bcjr_beta/beta.so
